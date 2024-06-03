@@ -1,31 +1,24 @@
 <?php
+require_once __DIR__ . "/type.php";
+require_once __DIR__ . "/cani.php";
+require_once __DIR__ . "/gatti.php";
+
 
 class Prodotti {
     private string $name;
-    private float $price;
-    private string $type;
-    private string $image;
-
-    public function __construct(string $name, float $price, string $type, string $image = "") {
-        $this->name = $name;
-        $this->price = $price;
-        $this->type = $type;
-        $this->image = $image;
+    private float  $price;
+          
+    public function __construct(string $name, float $price)
+    {
+        $this->name  = $name;
+        $this->price = $price;       
     }
 
-    public function getName(): string {
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
         return $this->name;
-    }
-
-    public function getPrice(): float {
-        return $this->price;
-    }
-
-    public function getType(): string {
-        return $this->type;
-    }
-
-    public function getImage(): string {
-        return $this->image;
     }
 }

@@ -1,16 +1,8 @@
 <?php
+require_once __DIR__ . "/models/prodotti.php";
+require_once __DIR__ . "/models/cani.php";
+require_once __DIR__ . "/models/gatti.php";
 
-require_once __DIR__ . "/Models/Prodotti.php";
-require_once __DIR__ . "/Models/Cani.php";
-require_once __DIR__ . "/Models/Gatti.php";
+$prodotto1 = new Prodotti("Mangime per cani", 9.99);
 
-// Creare istanze dei prodotti
-$prodotto1 = new Cani("Cibo per cani", 49.99, "Cibo", "");
-$prodotto2 = new Gatti("Cibo per gatti", 39.99, "Cibo", "");
-
-// Creare un array di prodotti
-$prodotti = [$prodotto1, $prodotto2];
-
-var_dump($prodotto1);
-var_dump($prodotto2);
-?>
+var_dump($prodotto1); 
