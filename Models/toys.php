@@ -1,58 +1,44 @@
 <?php
 require_once __DIR__ . "/products.php";
+
 class Toys extends Products
 {
     private string $size;
-    private float  $vote;
+    private float $vote;
     private string $description;
 
     public function __construct(string $name, float $price, string $image, string $type, string $size, float $vote, string $description)
     {
-        parent::__construct($name, $price, $image,$type);
-        $this->size        = $size;
-        $this->vote        = $vote;
-        $this->description = $description;
-
+        parent::__construct($name, $price, $image, $type);
         if (!in_array($size, ["S", "M", "L"])) {
-            throw new Exception("Taglia non valida");
+            throw new InvalidProductException("Taglia non valida: $size");
         }
+        $this->size = $size;
+        $this->vote = $vote;
+        $this->description = $description;
     }
 
-    /**
-     * Get the value of size
-     */
-    public function getSize()
+    public function getSize(): string
     {
         return $this->size;
     }
 
-    /**
-     * Set the value of vote
-     *
-     * @return  self
-     */
-    public function setVote($vote)
-    { 
-        if ($vote >= 0 || $vote <= 5) {
-            throw new Exception("voto non valido");
+    public function setVote(float $vote): void
+    {
+        if ($vote < 0 || $vote > 5) {
+            throw new InvalidProductException("Voto non valido: $vote");
         }
-        
+        $this->vote = $vote;
     }
 
-    /**
-     * Get the value of vote
-     */
-    public function getVote()
+    public function getVote(): float
     {
         return $this->vote;
     }
 
-
-    /**
-     * Get the value of description
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 }
+?>
